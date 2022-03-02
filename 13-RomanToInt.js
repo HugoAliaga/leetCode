@@ -14,14 +14,9 @@ var romanToInt = function(s) {
     let thisVal = 0;
     for (let i=0;i<s.length;i++){
         thisVal = mapRoman[s[i]];
-        if(i<s.length-1){
-            nextVal = mapRoman[s[i+1]]
-            if(thisVal>=nextVal){
-                integer+=thisVal;
-            } else {
-                integer += nextVal - thisVal;
-                i++
-            }
+        nextVal = mapRoman[s[i+1]]
+        if(thisVal<nextVal){
+            integer-=thisVal;
         } else {
             integer += thisVal;
         }
