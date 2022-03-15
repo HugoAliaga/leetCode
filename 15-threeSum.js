@@ -6,10 +6,11 @@ var threeSum = function(nums) {
     let solutions = [];
     let sum =0;
     let newArray = [];
-    let i=0; 
+    let i=-1; 
     let j = i+1;
     let k = nums.length-1;
-    for(let i =0; i<nums.length-2; i++){
+    while(i<nums.length-2){  
+        i++;
         if(nums[i]==nums[i-1]) continue;
         j=i+1;
         k= nums.length-1;
