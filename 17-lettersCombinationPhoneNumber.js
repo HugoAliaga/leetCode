@@ -1,6 +1,6 @@
 console.log('start');
 
-let map = {
+const map = {
     '2':['a','b','c'],
     '3':['d','e','f'],
     '4':['g','h','i'],
@@ -12,6 +12,7 @@ let map = {
 };
 
 var letterCombinations = function(digits) {
+    if (digits == null)  return '';
     let results = [];
     let tempResults = [];
     for (let i = 0;i<digits.length;i++){
@@ -41,7 +42,7 @@ solutions.push(['a','b','c']);
 tests.push('23');
 solutions.push(['ad','ae','af','bd','be','bf','cd','ce','cf']);
 
-tests.push('237');
+tests.push('234567');
 solutions.push(['ad','ae','af','bd','be','bf','cd','ce','cf']);
 
 let result = '';
