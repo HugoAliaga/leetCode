@@ -13,13 +13,20 @@ let map = {
 
 var letterCombinations = function(digits) {
     let results = [];
-    let thisResult = '';
+    let tempResults = [];
     for (let i = 0;i<digits.length;i++){
         if(results.length==0){
             for(let j=0;j<map[digits[i]].length;j++){
                 results.push(map[digits[i]][j]);
             }
-
+        } else {
+            tempResults=[];
+            for(let j=0;j<map[digits[i]].length;j++){
+                for (let k=0;k<results.length;k++){
+                    tempResults.push(results[k]+map[digits[i]][j]);
+                }
+            }
+            results = tempResults;
         }
     }
     return results;
@@ -28,8 +35,14 @@ var letterCombinations = function(digits) {
 let tests = [];
 let solutions = [];
 
-tests.push('23');
+tests.push('2');
 solutions.push(['a','b','c']);
+
+tests.push('23');
+solutions.push(['ad','ae','af','bd','be','bf','cd','ce','cf']);
+
+tests.push('237');
+solutions.push(['ad','ae','af','bd','be','bf','cd','ce','cf']);
 
 let result = '';
 for (let i =0; i<tests.length; i++){
