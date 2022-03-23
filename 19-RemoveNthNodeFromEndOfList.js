@@ -1,28 +1,7 @@
 "use strict";
 console.log('start');
 
-class LinkedList {
-    constructor (array){
-        this.value=array[0];
-        
-        if (array.length>1){
-            this.next = new LinkedList(array.splice(1,array.length),false);
-        } else {
-            this.next = null;
-        }
-    }
-}
-
-LinkedList.prototype.toArray = function () {
-    let newArray = [];
-    let node = this;
-    while (node.next){
-        newArray.push(node.value);
-        node.next ? node = node.next : '';
-    }
-    newArray.push(node.value);
-    return newArray;
-}
+const ListNode = require('./linkedList');
 
 var removeNthFromEnd2 = function(head, n) {
     let listLength = -1;
@@ -67,13 +46,13 @@ var removeNthFromEnd = function(head, n) {
 
 let tests=[];
 let solutions = [];
-tests.push([new LinkedList([1,2,3,4,5]),8]);
+tests.push([new ListNode([1,2,3,4,5]),8]);
 solutions.push([1,2,3,5]);
-tests.push([new LinkedList([1]),1]);
+tests.push([new ListNode([1]),1]);
 solutions.push([]);
-tests.push([new LinkedList([1,2]),1]);
+tests.push([new ListNode([1,2]),1]);
 solutions.push([1]);
-tests.push([new LinkedList([1,2]),2]);
+tests.push([new ListNode([1,2]),2]);
 solutions.push([2]);
 
 for(let i=0;i<tests.length;i++){
