@@ -35,7 +35,7 @@ let tests = [];
 let solutions = [];
 
 tests.push([[1,2,4],[1,3,4]]);
-solutions.push([1,1,2,3,4]);
+solutions.push([1,1,2,3,4,4]);
 
 tests.push([[],[]]);
 solutions.push([]);
@@ -48,6 +48,9 @@ for (let i=0; i< tests.length;i++){
     const arr2 = new ListNode();
     arr1.createFromArray(tests[i][0]);
     arr2.createFromArray(tests[i][1]);
-    let result = mergeTwoLists(arr1,arr2).toArray();
+    let result = mergeTwoLists(arr1,arr2);
+    if(result){
+        result = result.toArray();
+    }
     console.log('Test',i,'||',result,solutions[i],result==solutions[i] ? 'PASS' : 'FAIL');
 }
