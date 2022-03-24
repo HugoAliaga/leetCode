@@ -9,17 +9,13 @@ var mergeKLists = function(lists) {
     while(true){
         let minVal=Infinity;
         let listToUse;
-        let foundList = false;
         for(let i=0;i<lists.length;i++){
-            if(lists[i]){
-                if(minVal>lists[i].val){
-                    minVal=lists[i].val;
-                    listToUse=i;
-                    foundList = true;
-                }
+            if(lists[i] && minVal>lists[i].val){
+                minVal=lists[i].val;
+                listToUse=i;
             }
         }
-        if(foundList){
+        if(minVal<Infinity){
             newList.next = lists[listToUse];
             lists[listToUse]=lists[listToUse].next;
             newList=newList.next;
@@ -27,8 +23,27 @@ var mergeKLists = function(lists) {
             break;
         }
     }
+    return ans.next;
+}
 
+var mergeKLists2 = function(lists) {
+    let newArray = [];
+    let newList = new ListNode();
+    let ans = newList;
 
+    for (let i=0;i<lists.length;i++){
+        while(lists[i]){
+            newArray.push(lists[i].val);
+            lists[i]=lists[i].next;
+        }
+    }
+    newArray.sort((a,b)=>a-b);
+
+    for(let i=0;i<newArray.length;i++){
+        newList.next = new ListNode();
+        newList = newList.next;
+        newList.val = newArray[i];
+    }
     return ans.next;
 }
 
@@ -44,6 +59,6 @@ for(let i=0;i<tests.length;i++){
         newLN.createFromArray(tests[i][j]);
         tests[i][j]=newLN;
     }
-    let result = mergeKLists(tests[i]).toArray();
+    let result = mergeKLists2(tests[i]).toArray();
     console.log('Test',i,'||',result,results[i],result==results[i] ? 'PASS':'FAIL');
 }
